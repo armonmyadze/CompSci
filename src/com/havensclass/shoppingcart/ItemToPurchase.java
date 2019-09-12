@@ -1,13 +1,15 @@
-package havensclass.shoppingcart;
+package com.havensclass.shoppingcart;
 
 public class ItemToPurchase {
     public ItemToPurchase() {
         this.name = "none";
         this.price = 0;
         this.quantity = 0;
+        this.description = "none";
     }
 
     private String name;
+    private String description;
     private int price;
     private int quantity;
 
@@ -33,5 +35,18 @@ public class ItemToPurchase {
 
     public int getQuantity() {
         return this.quantity;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void printItemCost() {
+        System.out.println(getName() + " " + quantity + " @ $" + price + " = $" +
+                getQuantity()*getPrice());
+    }
+
+    public void printItemDescripiton() {
+        System.out.println(getName() + ": " + description);
     }
 }

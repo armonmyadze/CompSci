@@ -1,4 +1,4 @@
-package havensclass.shoppingcart;
+package com.havensclass.shoppingcart;
 
 import java.util.Scanner;
 
