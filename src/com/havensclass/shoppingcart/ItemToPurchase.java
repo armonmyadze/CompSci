@@ -1,11 +1,19 @@
 package com.havensclass.shoppingcart;
 
 public class ItemToPurchase {
+
     public ItemToPurchase() {
-        this.name = "none";
-        this.price = 0;
-        this.quantity = 0;
-        this.description = "none";
+        String name = "none";
+        String description = "none";
+        int price = 0;
+        int quantity = 0;
+    }
+
+    public ItemToPurchase(String name, String description, int price, int quantity) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     private String name;
@@ -41,12 +49,16 @@ public class ItemToPurchase {
         this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void printItemCost() {
         System.out.println(getName() + " " + quantity + " @ $" + price + " = $" +
                 getQuantity()*getPrice());
     }
 
     public void printItemDescripiton() {
-        System.out.println(getName() + ": " + description);
+        System.out.println(name + ": " + description);
     }
 }

@@ -7,12 +7,11 @@ public class ShoppingCartManager {
     }
 
     static Scanner scnr = new Scanner(System.in);
+    static boolean qIsPressed;
 
     public static void main(String [] args) {
         String name;
         String date;
-        int quantity;
-        char choice;
 
         System.out.println("Enter Customer's Name:");
         name = scnr.nextLine();
@@ -24,15 +23,13 @@ public class ShoppingCartManager {
 
         ShoppingCart cart = new ShoppingCart(name, date);
 
-        choice = processChoice();
-
-        if (choice != 'q') {
+        while (!qIsPressed) {
             printMenu();
-            processChoice(choice);
+            processChoice(cart);
         }
     }
 
-    private static char printMenu() {
+    private static void printMenu() {
         char choice;
 
         System.out.println("MENU");
@@ -44,47 +41,52 @@ public class ShoppingCartManager {
         System.out.println("o - Output shopping cart");
         System.out.println("q - Quit");
         System.out.println("");
-        System.out.print("Choose an option: ");
-        choice = scnr.next().charAt(0);
-
-        return choice;
+        System.out.println("Choose an option: ");
     }
 
     static void processChoice(ShoppingCart cart) {
         char choice = scnr.next().charAt(0);
         String name;
+        String description;
+        int price;
         int quantity;
         switch (choice) {
             case 'a':
-                ItemToPurchase item = new ItemToPurchase();
                 System.out.println("ADD ITEM TO CART");
                 System.out.println("Enter the item name:");
-                scnr.nextLine(); //Moving Scanner down
-                item.setName(scnr.nextLine());
+                scnr.nextLine(); //move scanner down
+                name = scnr.nextLine();
                 System.out.println("Enter the item description:");
-                item.setDescription(scnr.nextLine());
+                description = scnr.nextLine();
                 System.out.println("Enter the item price:");
-                item.setPrice(scnr.nextInt());
+                price = scnr.nextInt();
                 System.out.println("Enter the item quantity:");
-                item.setQuantity(scnr.nextInt());
+                quantity = scnr.nextInt();
+                ItemToPurchase item = new ItemToPurchase(name, description, price, quantity);
                 cart.addItem(item);
                 break;
 
             case 'd':
                 System.out.println("REMOVE ITEM FROM CART");
                 System.out.println("Enter name of item to remove:");
+                scnr.nextLine();
                 name = scnr.nextLine();
                 cart.removeItem(name);
                 break;
 
             case 'c':
                 System.out.println("CHANGE ITEM QUANTITY");
-                System.out.println("Enter the item name:");
+                System.out.print("Enter the item name: ");
                 name = scnr.nextLine();
-                System.out.println("Enter the new quantity:");
+                System.out.print("Enter the new quantity: ");
                 quantity = scnr.nextInt();
 
-                //cart.modifyItem();
+                ItemToPurchase modItem = new ItemToPurchase();
+
+                modItem.setName(name);
+                modItem.setQuantity(quantity);
+
+                cart.modifyItem(modItem);
                 break;
 
             case 'i':
@@ -98,6 +100,7 @@ public class ShoppingCartManager {
                 break;
 
             case 'q':
+                qIsPressed = true;
                 break;
         }
     }

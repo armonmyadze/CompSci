@@ -31,46 +31,72 @@ public class ShoppingCart {
     }
 
     public void removeItem(String itemName) {
-        if (cartItems.contains(itemName)) {
-            cartItems.remove(itemName);
+        ItemToPurchase itemToDelete = null;
+        for (ItemToPurchase item:cartItems) {
+            if (item.getName().equals(itemName)) {
+                itemToDelete = item;
+            }
+        }
+        if (itemToDelete != null) {
+            cartItems.remove(itemToDelete);
         } else {
             System.out.println("Item not found in cart. Nothing removed.");
         }
     }
 
-    public void modifyItem(String itemName) {
-        if (cartItems.contains(itemName)) {
-            cartItems.remove(itemName);
-        } else {
-            System.out.println("Item not found in cart. Nothing modified.");
+    public void modifyItem(ItemToPurchase newItem) {
+        for (ItemToPurchase item:cartItems) {
+            if(newItem.getName() == item.getName()) {
+
+                if (item.getDescription() == "none") {
+                    item.setDescription(newItem.getDescription());
+                }
+
+                if (item.getPrice() == 0) {
+                    item.setPrice(newItem.getPrice());
+                }
+
+                if (item.getQuantity() == 0) {
+                    item.setQuantity(newItem.getQuantity());
+                }
+
+            }
         }
     }
 
     public int getNumItemsInCart() {
-        return cartItems.size();
+        int total = 0;
+
+        for (ItemToPurchase item:cartItems) {
+            total = total + item.getQuantity();
+        }
+
+        return total;
     }
 
     public int getCostOfCart() {
         int total = 0;
         for (ItemToPurchase cartItem:cartItems) {
-            total = total + cartItem.getPrice();
+            total = total + (cartItem.getPrice() * cartItem.getQuantity());
         }
 
         return total;
     }
 
     public void printTotal() {
+        System.out.println(getCustomerName() + "'s Shopping Cart - " + getDate());
+        System.out.println("Number of Items: " + getNumItemsInCart());
         if (cartItems.size() > 0) {
-            System.out.println(getCustomerName() + "'s Shopping Cart - " + getDate());
-            System.out.println("Number of Items: " + getNumItemsInCart());
             for (ItemToPurchase cartItem:cartItems) {
                 cartItem.printItemCost();
             }
             System.out.println("");
-            System.out.println("Total: " + getCostOfCart());
         } else {
+            System.out.println();
             System.out.println("SHOPPING CART IS EMPTY");
+            System.out.println();
         }
+        System.out.println("Total: $" + getCostOfCart());
     }
 
     public void printDescriptions() {
