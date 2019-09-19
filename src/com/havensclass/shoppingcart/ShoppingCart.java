@@ -45,22 +45,27 @@ public class ShoppingCart {
     }
 
     public void modifyItem(ItemToPurchase newItem) {
+        boolean found = false;
         for (ItemToPurchase item:cartItems) {
-            if(newItem.getName() == item.getName()) {
+            if(newItem.getName().equals(item.getName())) {
+                found = true;
 
-                if (item.getDescription() == "none") {
-                    item.setDescription(newItem.getDescription());
+                if (newItem.getDescription() != "none") {
+                        item.setDescription(newItem.getDescription());
                 }
 
-                if (item.getPrice() == 0) {
+                if (newItem.getPrice() != 0) {
                     item.setPrice(newItem.getPrice());
                 }
 
-                if (item.getQuantity() == 0) {
+                if (newItem.getQuantity() != 0) {
                     item.setQuantity(newItem.getQuantity());
                 }
 
             }
+        }
+        if (!found) {
+            System.out.println("Item not found in cart. Nothing modified.");
         }
     }
 
@@ -101,7 +106,6 @@ public class ShoppingCart {
 
     public void printDescriptions() {
         System.out.println(getCustomerName() + "'s Shopping Cart - " + getDate());
-        System.out.println("Number of Items: " + getNumItemsInCart());
         System.out.println("");
         System.out.println("Item Descriptions");
         for (ItemToPurchase cartItem: cartItems) {

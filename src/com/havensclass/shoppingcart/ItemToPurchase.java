@@ -59,6 +59,6 @@ public class ItemToPurchase {
     }
 
     public void printItemDescripiton() {
-        System.out.println(name + ": " + description);
+        System.out.println(description);
     }
 }

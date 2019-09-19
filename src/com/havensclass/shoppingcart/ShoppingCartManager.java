@@ -33,7 +33,6 @@ public class ShoppingCartManager {
         char choice;
 
         System.out.println("MENU");
-        System.out.println("");
         System.out.println("a - Add item to cart");
         System.out.println("d - Remove item from cart");
         System.out.println("c - Change item quantity");
@@ -52,6 +51,7 @@ public class ShoppingCartManager {
         int quantity;
         switch (choice) {
             case 'a':
+                System.out.println();
                 System.out.println("ADD ITEM TO CART");
                 System.out.println("Enter the item name:");
                 scnr.nextLine(); //move scanner down
@@ -62,39 +62,43 @@ public class ShoppingCartManager {
                 price = scnr.nextInt();
                 System.out.println("Enter the item quantity:");
                 quantity = scnr.nextInt();
+                System.out.println();
                 ItemToPurchase item = new ItemToPurchase(name, description, price, quantity);
                 cart.addItem(item);
                 break;
 
             case 'd':
+                System.out.println();
                 System.out.println("REMOVE ITEM FROM CART");
                 System.out.println("Enter name of item to remove:");
                 scnr.nextLine();
                 name = scnr.nextLine();
                 cart.removeItem(name);
+                System.out.println();
                 break;
 
             case 'c':
+                System.out.println();
                 System.out.println("CHANGE ITEM QUANTITY");
-                System.out.print("Enter the item name: ");
+                System.out.println("Enter the item name: ");
+                scnr.nextLine();
                 name = scnr.nextLine();
-                System.out.print("Enter the new quantity: ");
+                System.out.println("Enter the new quantity: ");
                 quantity = scnr.nextInt();
 
-                ItemToPurchase modItem = new ItemToPurchase();
-
-                modItem.setName(name);
-                modItem.setQuantity(quantity);
+                ItemToPurchase modItem = new ItemToPurchase(name, "none", 0, quantity);
 
                 cart.modifyItem(modItem);
                 break;
 
             case 'i':
+                System.out.println();
                 System.out.println("OUTPUT ITEMS' DESCRIPTIONS");
                 cart.printDescriptions();
                 break;
 
             case 'o':
+                System.out.println();
                 System.out.println("OUTPUT SHOPPING CART");
                 cart.printTotal();
                 break;
@@ -102,6 +106,10 @@ public class ShoppingCartManager {
             case 'q':
                 qIsPressed = true;
                 break;
+
+            default:
+                System.out.println("Choose an option:");
+                processChoice(cart);
         }
     }
 
