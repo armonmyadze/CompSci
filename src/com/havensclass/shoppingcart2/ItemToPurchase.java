@@ -1,6 +1,6 @@
 package com.havensclass.shoppingcart2;
 
-class ItemToPurchase {
+public abstract class ItemToPurchase {
 
     public ItemToPurchase() {
         String name = "none";
