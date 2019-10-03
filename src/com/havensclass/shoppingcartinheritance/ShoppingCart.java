@@ -113,4 +113,13 @@ class ShoppingCart {
             cartItem.printItemDescripiton();
         }
     }
+
+    public void printNewItems() {
+        for (ItemToPurchase item : cartItems) {
+            if (item instanceof MyInheritedItem) {
+                item.toString();
+            }
+        }
+    }
+
 }

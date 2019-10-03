@@ -38,6 +38,8 @@ class ShoppingCartManager {
         System.out.println("c - Change item quantity");
         System.out.println("i - Output items' descriptions");
         System.out.println("o - Output shopping cart");
+        System.out.println("m - Make a new item and add to cart");
+        System.out.println("s - Print out special items");
         System.out.println("q - Quit");
         System.out.println("");
         System.out.println("Choose an option: ");
@@ -101,6 +103,33 @@ class ShoppingCartManager {
                 System.out.println();
                 System.out.println("OUTPUT SHOPPING CART");
                 cart.printTotal();
+                break;
+
+            case 'm':
+                System.out.println();
+                System.out.println("ADD NEW ITEM");
+                System.out.println("Enter the item name:");
+                //scnr.nextLine(); //move scanner down
+                name = scnr.nextLine();
+                System.out.println("Enter the item description:");
+                description = scnr.nextLine();
+                System.out.println("Enter the item price:");
+                price = scnr.nextInt();
+                System.out.println("Enter the item quantity:");
+                quantity = scnr.nextInt();
+                System.out.println("Enter stringy:");
+                String stringy = scnr.nextLine();
+                System.out.println("Enter inty:");
+                int inty = scnr.nextInt();
+                System.out.println();
+                MyInheritedItem newItem = new MyInheritedItem(name, description, price, quantity, stringy, inty);
+                cart.addItem(newItem);
+                break;
+
+            case 's':
+                System.out.println();
+                System.out.println("PRINT NEW ITEM DETAILS");
+                cart.printNewItems();
                 break;
 
             case 'q':

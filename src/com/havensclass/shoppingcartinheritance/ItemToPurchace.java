@@ -16,10 +16,10 @@ class ItemToPurchase {
         this.quantity = quantity;
     }
 
-    private String name;
-    private String description;
-    private int price;
-    private int quantity;
+    protected static String name;
+    protected static String description;
+    protected static int price;
+    protected static int quantity;
 
     public void setName(String name) {
         this.name = name;
