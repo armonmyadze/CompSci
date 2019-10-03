@@ -2,7 +2,7 @@ package com.havensclass.shoppingcart;
 
 import java.util.Scanner;
 
-public class ShoppingCartManager {
+class ShoppingCartManager {
     public ShoppingCartManager() {
     }
 

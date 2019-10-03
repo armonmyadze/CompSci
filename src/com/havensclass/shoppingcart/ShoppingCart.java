@@ -2,7 +2,7 @@ package com.havensclass.shoppingcart;
 
 import java.util.ArrayList;
 
-public class ShoppingCart {
+class ShoppingCart {
     public ShoppingCart() {
         this.customerName = "none";
         this.currentDate = "January 1, 2016";
