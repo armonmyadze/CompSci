@@ -6,6 +6,8 @@ public abstract class Shape {
 
     abstract double computeArea();
 
+    abstract double computePerimeter();
+
     public Point getPosition() {
         return this.position;
     }
