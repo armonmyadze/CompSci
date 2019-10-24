@@ -53,9 +53,9 @@ class ItemToPurchase {
         return description;
     }
 
-    public void printItemCost() {
-        System.out.println(getName() + " " + quantity + " @ $" + price + " = $" +
-                getQuantity()*getPrice());
+    public void printItemCost(ItemToPurchase item) {
+        System.out.println(item.getName() + " " + item.getQuantity() + " @ $" + item.getPrice() + " = $" +
+                item.getQuantity()*item.getPrice());
     }
 
     public void printItemDescripiton() {

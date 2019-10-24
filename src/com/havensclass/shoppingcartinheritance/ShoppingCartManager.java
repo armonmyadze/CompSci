@@ -46,11 +46,9 @@ class ShoppingCartManager {
     }
 
     static void processChoice(ShoppingCart cart) {
+        String name, description;
+        int quantity, price;
         char choice = scnr.next().charAt(0);
-        String name;
-        String description;
-        int price;
-        int quantity;
         switch (choice) {
             case 'a':
                 System.out.println();

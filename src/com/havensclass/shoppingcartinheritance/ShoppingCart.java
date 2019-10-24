@@ -93,7 +93,7 @@ class ShoppingCart {
         System.out.println("Number of Items: " + getNumItemsInCart());
         if (cartItems.size() > 0) {
             for (ItemToPurchase cartItem:cartItems) {
-                cartItem.printItemCost();
+                cartItem.printItemCost(cartItem);
             }
             System.out.println("");
         } else {
