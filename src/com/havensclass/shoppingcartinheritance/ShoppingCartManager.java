@@ -107,7 +107,7 @@ class ShoppingCartManager {
                 System.out.println();
                 System.out.println("ADD NEW ITEM");
                 System.out.println("Enter the item name:");
-                //scnr.nextLine(); //move scanner down
+                scnr.nextLine(); //move scanner down
                 name = scnr.nextLine();
                 System.out.println("Enter the item description:");
                 description = scnr.nextLine();
@@ -116,8 +116,10 @@ class ShoppingCartManager {
                 System.out.println("Enter the item quantity:");
                 quantity = scnr.nextInt();
                 System.out.println("Enter stringy:");
+                scnr.nextLine();
                 String stringy = scnr.nextLine();
                 System.out.println("Enter inty:");
+                scnr.nextLine();
                 int inty = scnr.nextInt();
                 System.out.println();
                 MyInheritedItem newItem = new MyInheritedItem(name, description, price, quantity, stringy, inty);
